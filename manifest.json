@@ -1,0 +1,10 @@
+{
+  "dataStudio": {
+    "name": "Test Vizualizace",
+    "organization": "Moje Organizace",
+    "guid": "test_vizualizace",
+    "scripts": {
+      "main": "https://looker-multigraf.web.app/vizualizace.js"
+    }
+  }
+}
