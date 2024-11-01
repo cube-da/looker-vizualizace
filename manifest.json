@@ -4,7 +4,7 @@
     "organization": "Moje Organizace",
     "guid": "test_vizualizace",
     "scripts": {
-      "main": "./vizualizace.js"
+      "main": "https://cube-da.github.io/looker-vizualizace/vizualizace.js"
     }
   }
 }
