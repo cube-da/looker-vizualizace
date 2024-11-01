@@ -1,16 +1,29 @@
-// Načtení knihovny dscc pro komunikaci s daty v Looker Studiu
+// Načtení Looker Visualization API
 let dscc = require('dscc');
 
-// Funkce pro vykreslení vizualizace
+// Funkce, která vykreslí data
 function drawViz(data) {
-    // Vytvoření divu, který bude obsahovat vizualizaci
-    const div = document.createElement('div');
-    div.style.fontSize = "24px";
-    div.textContent = "Toto je vlastní vizualizace!";
+    // Vymažeme předchozí obsah
+    document.body.innerHTML = '';
+
+    // Vytvoříme základní prvek pro vizualizaci
+    const container = document.createElement('div');
+    container.style.fontSize = "24px";
+    container.style.margin = "20px";
     
-    // Přidání divu do těla dokumentu
-    document.body.appendChild(div);
+    // Získáme data
+    const table = data.tables.DEFAULT; // DEFAULT obsahuje hlavní tabulku s daty
+    
+    // Iterace přes řádky dat
+    table.forEach(row => {
+        const rowDiv = document.createElement('div');
+        rowDiv.textContent = `Dimenze: ${row.dimension[0].value}, Metrika: ${row.metric[0].value}`;
+        container.appendChild(rowDiv);
+    });
+
+    // Přidáme obsah do těla dokumentu
+    document.body.appendChild(container);
 }
 
-// Předplatné na data pro automatickou aktualizaci při změně dat v Looker Studiu
+// Odebírání dat z Looker Studia
 dscc.subscribeToData(drawViz);
